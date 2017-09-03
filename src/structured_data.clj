@@ -152,10 +152,12 @@
   (cond
     (== (count books) 0)    "No books."
     (== (count books) 1)    (str "1 book. " (book->string (get books 0)) ".")
-    :else
-                                 (str (count books)
+    :else                    (apply str (count books)
                                       " books. "
-                                      (interpose ". " (map book->string books)))))
+                                      (interpose ". " (map book->string books))
+                                  )
+    )
+  )
 
 (defn books-by-author [author books]
   :-)
